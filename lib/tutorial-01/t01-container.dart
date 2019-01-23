@@ -9,6 +9,7 @@ class _T01ContainerState extends State<T01Container> {
   double _margin = 0;
   double _padding = 0;
   double _height = 100;
+  double _radius = 0;
   String _alignment = Alignment.center.toString();
   Alignment alignment = Alignment.center;
 
@@ -29,8 +30,12 @@ class _T01ContainerState extends State<T01Container> {
               ),
               padding: EdgeInsets.all(_padding),
               color: Colors.lightBlue,
-              child:  Container(
-                color: Colors.yellowAccent,
+              child:  AnimatedContainer(
+                duration: Duration(milliseconds: 250),
+                decoration: BoxDecoration(
+                    color: Colors.yellowAccent,
+                    borderRadius: BorderRadius.circular(_radius)
+                ),
                 width: 1000,
                 alignment: alignment,
                 child: Text('What the Flutter'),
@@ -72,7 +77,17 @@ class _T01ContainerState extends State<T01Container> {
                     },
                     value: _height,
                   ),
-                  Text('Text Alignment'),
+                  Text('Yellow container circular radius ${_radius.round().toString()}px'),
+                  Slider(
+                    activeColor: Colors.indigoAccent,
+                    min: 0,
+                    max: 30.0,
+                    onChanged: (val) {
+                      setState(() => _radius = val);
+                    },
+                    value: _radius,
+                  ),
+                  Text('Text Alignment in Yellow Container'),
                   DropdownButton<String>(
                     items: <String>[
                       Alignment.bottomCenter.toString(), Alignment.bottomLeft.toString(),
