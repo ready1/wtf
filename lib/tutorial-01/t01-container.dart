@@ -9,6 +9,7 @@ class _T01ContainerState extends State<T01Container> {
   double _margin = 0;
   double _padding = 0;
   double _height = 100;
+  String _alignment = Alignment.center.toString();
   Alignment alignment = Alignment.center;
 
   @override
@@ -28,27 +29,16 @@ class _T01ContainerState extends State<T01Container> {
               ),
               padding: EdgeInsets.all(_padding),
               color: Colors.lightBlue,
-              alignment: alignment,
-              child: Container(
-                margin: EdgeInsets.all(_margin),
-                constraints: BoxConstraints.expand(
-                    height: _height
-                ),
-                padding: EdgeInsets.all(_padding),
-                color: Colors.lightBlue,
+              child:  Container(
+                color: Colors.yellowAccent,
+                width: 1000,
                 alignment: alignment,
-                child: Container(
-                    color: Colors.yellowAccent,
-                    width: 1000,
-                    alignment: Alignment.center,
-                    child: Text('What the Flutter'),
-                ),
-                transform: Matrix4.rotationZ(0),
+                child: Text('What the Flutter'),
               ),
               transform: Matrix4.rotationZ(0),
             ),
             Container(
-              alignment: Alignment.topLeft,
+              alignment: Alignment.centerLeft,
               padding: EdgeInsets.all(10),
               child: Column(
                 children: <Widget>[
@@ -82,7 +72,62 @@ class _T01ContainerState extends State<T01Container> {
                     },
                     value: _height,
                   ),
-                  Text('Alignment ${alignment}'),
+                  Text('Text Alignment'),
+                  DropdownButton<String>(
+                    items: <String>[
+                      Alignment.bottomCenter.toString(), Alignment.bottomLeft.toString(),
+                      Alignment.bottomRight.toString(), Alignment.center.toString(),
+                      Alignment.centerLeft.toString(), Alignment.centerRight.toString(),
+                      Alignment.topCenter.toString(), Alignment.topLeft.toString(),
+                      Alignment.topRight.toString(),
+                    ].map((String value) {
+                      return new DropdownMenuItem<String>(
+                        value: value,
+                        child: new Text(value),
+                      );
+                    }).toList(),
+                    onChanged: (val) {
+                      switch(val){
+                        case 'bottomCenter':
+                          setState(() => _alignment = val);
+                          setState(() => alignment = Alignment.bottomCenter);
+                          break;
+                        case 'bottomLeft':
+                          setState(() => _alignment = val);
+                          setState(() => alignment = Alignment.bottomLeft);
+                          break;
+                        case 'bottomRight':
+                          setState(() => _alignment = val);
+                          setState(() => alignment = Alignment.bottomRight);
+                          break;
+                        case 'center':
+                          setState(() => _alignment = val);
+                          setState(() => alignment = Alignment.center);
+                          break;
+                        case 'centerLeft':
+                          setState(() => _alignment = val);
+                          setState(() => alignment = Alignment.centerLeft);
+                          break;
+                        case 'centerRight':
+                          setState(() => _alignment = val);
+                          setState(() => alignment = Alignment.centerRight);
+                          break;
+                        case 'topCenter':
+                          setState(() => _alignment = val);
+                          setState(() => alignment = Alignment.topCenter);
+                          break;
+                        case 'topLeft':
+                          setState(() => _alignment = val);
+                          setState(() => alignment = Alignment.topLeft);
+                          break;
+                        case 'topRight':
+                          setState(() => _alignment = val);
+                          setState(() => alignment = Alignment.topRight);
+                          break;
+                      }
+                    },
+                    value: _alignment,
+                  )
                 ],
               )
             ),
