@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import '../utilities/random-generator.dart';
 
-class T01Row extends StatefulWidget {
+class T01Column extends StatefulWidget {
   @override
-  _T01RowState createState() => _T01RowState();
+  _T01ColumnState createState() => _T01ColumnState();
 }
 
-class _T01RowState extends State<T01Row> {
-  double _columns = 2;
+class _T01ColumnState extends State<T01Column> {
+  double _rows = 2;
 
   @override
   Widget build(BuildContext context) {
@@ -22,16 +22,16 @@ class _T01RowState extends State<T01Row> {
               margin: EdgeInsets.fromLTRB(0, 40, 0, 0),
               child: Column(
                 children: <Widget>[
-                  Text('# of Columns in Row ${_columns.round().toString()}'),
+                  Text('# of Rows in Column ${_rows.round().toString()}'),
                   Slider(
                     activeColor: Colors.indigoAccent,
                     min: 1,
                     max: 7,
                     divisions: 7,
                     onChanged: (val) {
-                      setState(() => _columns = val);
+                      setState(() => _rows = val);
                     },
-                    value: _columns,
+                    value: _rows,
                   ),
                 ],
               ),
@@ -44,21 +44,18 @@ class _T01RowState extends State<T01Row> {
   Widget buildRowWidgets(){
     List<Widget> list = new List<Widget>();
 
-    for(var i = 0; i < _columns; i++){
+    for(var i = 0; i < _rows; i++){
       list.add(
-        Expanded(child: AnimatedContainer(
-          duration: Duration(milliseconds: 250),
-          constraints: BoxConstraints.expand(
-              height: 200,
-          ),
-          padding: EdgeInsets.all(20),
-          child: new Text('${i+1}'),
-          alignment: Alignment.center,
-          color: getRandomColor(),
-        ))
+          AnimatedContainer(
+            duration: Duration(milliseconds: 250),
+            padding: EdgeInsets.all(20),
+            child: new Text('${i+1}'),
+            alignment: Alignment.center,
+            color: getRandomColor(),
+          )
       );
     }
 
-    return new Row(children: list);
+    return new Column(children: list, mainAxisSize: MainAxisSize.max,);
   }
 }

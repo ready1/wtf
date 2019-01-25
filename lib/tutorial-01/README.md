@@ -66,3 +66,32 @@ Widget buildRowWidgets(){
     return new Row(children: list);
 }
 ```
+
+*Tutorial 01 - Basic Widgets: Columns*
+
+Columns are widgets that allows you to stack one to many children on top of each other. In the tutorial the number of rows are dynamically generated based on the value of the _rows variable.
+
+<img src="../../assets/t01-column-001.png" width="350">
+
+Sample Code:
+```javascript
+double _rows = 3; // set the number of rows to create inside a column
+
+Widget buildRowWidgets(){
+    List<Widget> list = new List<Widget>();
+
+    for(var i = 0; i < _rows; i++){
+      list.add(
+          AnimatedContainer(
+            duration: Duration(milliseconds: 250),
+            padding: EdgeInsets.all(20),
+            child: new Text('${i+1}'),
+            alignment: Alignment.center,
+            color: getRandomColor(),
+          )
+      );
+    }
+
+    return new Column(children: list, mainAxisSize: MainAxisSize.max,);
+}
+```

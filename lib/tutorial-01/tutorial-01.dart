@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 't01-container.dart';
 import 't01-row.dart';
+import 't01-column.dart';
 
 class Tutorial01 extends StatelessWidget {
   var topics = ['Container','Row', 'Column', 'Image', 'Text', 'Icon', 'Raised Button', 'Scaffold', 'Appbar'];
@@ -33,6 +34,9 @@ class Tutorial01 extends StatelessWidget {
         break;
       case 'Row':
         page = T01Row();
+        break;
+      case 'Column':
+        page = T01Column();
         break;
     }
 
