@@ -6,8 +6,8 @@ class T01Container extends StatefulWidget {
 }
 
 class _T01ContainerState extends State<T01Container> {
-  double _margin = 0;
-  double _padding = 0;
+  double _margin = 5;
+  double _padding = 5;
   double _height = 100;
   double _radius = 0;
   String _alignment = Alignment.center.toString();
