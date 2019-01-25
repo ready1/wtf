@@ -2,6 +2,12 @@ import 'package:flutter/material.dart';
 import 't01-container.dart';
 import 't01-row.dart';
 import 't01-column.dart';
+import 't01-image.dart';
+import 't01-text.dart';
+import 't01-icon.dart';
+import 't01-raisedbutton.dart';
+import 't01-scaffold.dart';
+import 't01-appbar.dart';
 
 class Tutorial01 extends StatelessWidget {
   var topics = ['Container','Row', 'Column', 'Image', 'Text', 'Icon', 'Raised Button', 'Scaffold', 'Appbar'];
@@ -37,6 +43,24 @@ class Tutorial01 extends StatelessWidget {
         break;
       case 'Column':
         page = T01Column();
+        break;
+      case 'Image':
+        page = T01Image();
+        break;
+      case 'Text':
+        page = T01Text();
+        break;
+      case 'Icon':
+        page = T01Icon();
+        break;
+      case 'Raised Button':
+        page = T01RaisedButton();
+        break;
+      case 'Scaffold':
+        page = T01Scaffold();
+        break;
+      case 'Appbar':
+        page = T01Appbar();
         break;
     }
 
