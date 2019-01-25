@@ -35,3 +35,34 @@ Container( // OUTER CONTAINER
   transform: Matrix4.rotationZ(0),
 )
 ```
+
+*Tutorial 01 - Basic Widgets: Rows*
+
+Rows are widgets that allows you to position one to many children side by side. In the tutorial the number of columns are dynamically generated based on the value of the _columns variable.
+
+<img src="../../assets/t01-row-001.png" width="350">
+
+Sample Code:
+```javascript
+double _columns = 3; // set the number of columns to create inside a row
+
+Widget buildRowWidgets(){
+    List<Widget> list = new List<Widget>();
+
+    for(var i = 0; i < _columns; i++){
+      list.add(
+        Expanded(child: AnimatedContainer(
+          duration: Duration(milliseconds: 250),
+          constraints: BoxConstraints.expand(
+              height: 200,
+          ),
+          padding: EdgeInsets.all(20),
+          child: new Text('${i}'),
+          alignment: Alignment.center
+        ))
+      );
+    }
+
+    return new Row(children: list);
+}
+```
